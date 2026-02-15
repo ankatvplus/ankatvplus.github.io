@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Big Buck Bunny",
+    "year": "2008",
+    "genre": "Animasyon",
+    "description": "Açık kaynaklı kısa animasyon filmi.",
+    "poster": "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    "title": "Elephant Dream",
+    "year": "2006",
+    "genre": "Bilim Kurgu",
+    "description": "İlk açık kaynaklı 3D animasyon filmi.",
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/9/90/Elephants_Dream_s1_proog.jpg",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  },
+  {
+    "title": "Sintel",
+    "year": "2010",
+    "genre": "Fantastik",
+    "description": "Bir ejderha ve genç kızın hikayesi.",
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/7/75/Sintel_poster.jpg",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  },
+  {
+    "title": "Tears of Steel",
+    "year": "2012",
+    "genre": "Bilim Kurgu",
+    "description": "Robot istilasına karşı mücadele.",
+    "poster": "https://mango.blender.org/wp-content/uploads/2013/05/05_thom_celia_bridge.jpg",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+    "title": "For Bigger Blazes",
+    "year": "2013",
+    "genre": "Demo",
+    "description": "Google test videosu.",
+    "poster": "https://dummyimage.com/300x450/000/fff&text=Film",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+  }
+]
