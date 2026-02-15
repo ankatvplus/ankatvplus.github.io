@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  flex-direction:column;
+}
+video{
+  width:90%;
+  max-width:1100px;
+}
+button{
+  margin-bottom:15px;
+  padding:10px 15px;
+  background:#e50914;
+  border:none;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<button onclick="goBack()">⬅ Geri</button>
+
+<video id="videoPlayer" controls autoplay></video>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const videoURL = params.get("video");
+
+if(videoURL){
+  document.getElementById("videoPlayer").src = videoURL;
+}
+
+function goBack(){
+  window.history.back();
+}
+</script>
+
+</body>
+</html>
