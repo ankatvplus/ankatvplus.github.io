@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <style>
+        body { background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        video { max-width: 100%; max-height: 100%; }
+    </style>
+</head>
+<body>
+    <!-- UYARI: Bu player büyük ihtimalle çalışmayacaktır.
+         Çünkü kullanılan link geçerli bir video dosyası değil 
+         ve erişilemiyor (404 hatası). 
+         Ayrıca User-Agent değiştirme HTML ile yapılamaz. -->
+    <video id="videoPlayer" controls>
+        <!-- Kaynak: Verdiğiniz link (video/mp4 varsayımıyla eklendi) -->
+        <source src="https://filmarsivi.atakann.workers.dev/?ID=https://www.filmmodu.ws/rich-flu-film-izle" type="video/mp4">
+        <!-- Eğer video HLS (m3u8) formatındaysa alternatif olarak eklenmiştir -->
+        <source src="https://filmarsivi.atakann.workers.dev/?ID=https://www.filmmodu.ws/rich-flu-film-izle" type="application/x-mpegURL">
+        Tarayıcınız video etiketini desteklemiyor.
+    </video>
+
+    <script>
+        // Konsola uyarı yazdıralım
+        console.warn("Bu player çalışmayabilir. Link geçerli bir video değil veya erişilemiyor.");
+        // İsteğe bağlı: Video yüklenemezse hata göster
+        document.getElementById('videoPlayer').addEventListener('error', function(e) {
+            console.error('Video yüklenemedi:', e);
+            alert('Video yüklenemedi. Link geçersiz veya erişim sorunu var.');
+        });
+    </script>
+</body>
+</html>
