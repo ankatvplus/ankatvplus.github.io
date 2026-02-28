@@ -1,131 +1,198 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Arabesk TV</title>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-<style>
-body{
-margin:0;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Arial;
-color:white;
-}
-
-.container{
-position:relative;
-width:80%;
-}
-
-video{
-width:100%;
-}
-
-.overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-padding:10px;
-box-sizing:border-box;
-}
-
-.marquee{
-white-space:nowrap;
-overflow:hidden;
-box-sizing:border-box;
-}
-
-.marquee span{
-display:inline-block;
-padding-left:100%;
-animation:marquee 15s linear infinite;
-font-size:20px;
-color:red;
-font-weight:bold;
-}
-
-@keyframes marquee{
-0% { transform: translate(0,0); }
-100% { transform: translate(-100%,0); }
-}
-
-.clock{
-position:absolute;
-top:10px;
-right:15px;
-font-size:18px;
-background:rgba(0,0,0,0.6);
-padding:5px 10px;
-border-radius:5px;
-}
-
-.nowplaying{
-position:absolute;
-bottom:15px;
-left:15px;
-background:rgba(0,0,0,0.6);
-padding:5px 10px;
-border-radius:5px;
-font-size:18px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Müzik TV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .player-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .status {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+        .now-playing {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ffd700;
+        }
+        audio {
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 30px;
+        }
+        .playlist {
+            text-align: left;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .playlist h3 {
+            margin-top: 0;
+            color: #ffd700;
+        }
+        .playlist-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .playlist-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        .playlist-item.active {
+            background: rgba(255,215,0,0.3);
+            border-left: 4px solid gold;
+        }
+        button {
+            background: gold;
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
+    <div class="player-container">
+        <h1>🎵 ONLINE MÜZİK TV</h1>
+        <div class="status">🔴 CANLI YAYINDA</div>
+        <div class="now-playing" id="nowPlaying">Şarkı seçili değil</div>
+        
+        <audio id="audioPlayer" controls></audio>
+        
+        <div>
+            <button onclick="playRandom()">🎲 Rastgele Çal</button>
+            <button onclick="togglePlay()">⏯️ Oynat/Duraklat</button>
+        </div>
+        
+        <div class="playlist">
+            <h3>📋 Çalma Listesi</h3>
+            <div id="playlistItems"></div>
+        </div>
+        
+        <div class="footer">
+            ⚡ 4 MP3 dosyası sırayla çalıyor | Canlı TV deneyimi
+        </div>
+    </div>
 
-<div class="container">
-<video id="video" autoplay controls muted></video>
-
-<div class="overlay">
-<div class="marquee">
-<span>ARABESK TV | 7/24 Kesintisiz Arabesk Muzik</span>
-</div>
-<div class="clock" id="clock"></div>
-<div class="nowplaying" id="nowPlaying">Calan: Yukleniyor...</div>
-</div>
-
-</div>
-
-<script>
-var video = document.getElementById('video');
-var videoSrc = 'arabesk.m3u8';
-var nowPlaying = document.getElementById('nowPlaying');
-
-if(Hls.isSupported()){
-  var hls = new Hls();
-  hls.loadSource(videoSrc);
-  hls.attachMedia(video);
-}
-
-video.addEventListener('timeupdate', function(){
-  var time = video.currentTime;
-
-  if(time < 180){
-    nowPlaying.innerHTML = "Calan: Sarki 1";
-  }else if(time < 380){
-    nowPlaying.innerHTML = "Calan: Sarki 2";
-  }else{
-    nowPlaying.innerHTML = "Calan: Sarki 3";
-  }
-});
-
-function updateClock(){
-  var now = new Date();
-  var saat = now.toLocaleTimeString();
-  document.getElementById("clock").innerHTML = saat;
-}
-setInterval(updateClock,1000);
-updateClock();
-
-video.addEventListener('ended', function(){
-  video.play();
-});
-</script>
-
+    <script>
+        // MP3 DOSYALARININ LİSTESİ - BURAYI KENDİ DOSYALARINIZLA GÜNCELLEYİN!
+        const playlist = [
+            { name: "Şarkı 1", file: "sarki1.mp3" },
+            { name: "Şarkı 2", file: "sarki2.mp3" },
+            { name: "Şarkı 3", file: "sarki3.mp3" },
+            { name: "Şarkı 4", file: "sarki4.mp3" }
+        ];
+        
+        let currentIndex = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Playlist'i ekranda göster
+        function displayPlaylist() {
+            const container = document.getElementById('playlistItems');
+            container.innerHTML = '';
+            
+            playlist.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'playlist-item' + (index === currentIndex ? ' active' : '');
+                div.innerHTML = `🎵 ${item.name}`;
+                div.onclick = () => playSong(index);
+                container.appendChild(div);
+            });
+        }
+        
+        // Şarkı çal
+        function playSong(index) {
+            currentIndex = index;
+            const song = playlist[currentIndex];
+            audio.src = song.file;
+            audio.play();
+            document.getElementById('nowPlaying').innerHTML = `🎵 Şimdi çalıyor: ${song.name}`;
+            
+            // Aktif şarkıyı vurgula
+            const items = document.querySelectorAll('.playlist-item');
+            items.forEach((item, i) => {
+                if (i === currentIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+        
+        // Sonraki şarkıya geç
+        function nextSong() {
+            let nextIndex = (currentIndex + 1) % playlist.length;
+            playSong(nextIndex);
+        }
+        
+        // Rastgele şarkı çal
+        function playRandom() {
+            let randomIndex = Math.floor(Math.random() * playlist.length);
+            playSong(randomIndex);
+        }
+        
+        // Oynat/Duraklat
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        
+        // Şarkı bitince sonrakine geç
+        audio.addEventListener('ended', nextSong);
+        
+        // Sayfa yüklenince playlist'i göster
+        displayPlaylist();
+        
+        // İlk şarkıyı hazırla (otomatik başlatmak isterseniz aşağıdaki satırı aktif edin)
+        // playSong(0);
+    </script>
 </body>
 </html>
