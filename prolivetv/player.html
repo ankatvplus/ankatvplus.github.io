@@ -29,47 +29,27 @@
             height: 100vh;
             position: relative;
             background: #000;
-            box-shadow: 0 0 50px rgba(255,107,107,0.3);
         }
         
-        /* VİDEO KAPAK ALANI (sabit resim) */
-        .video-background {
+        /* VİDEO ALANI */
+        .video-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
+            background: #000;
         }
         
-        #coverImage {
+        #videoPlayer {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            filter: brightness(0.9) contrast(1.1);
-            animation: slowZoom 20s infinite alternate ease-in-out;
+            object-fit: contain;  /* 'cover' derseniz videolar kırpılır, 'contain' derseniz tam görünür */
+            background: #000;
         }
         
-        /* Arka planda hafif hareket efekti (TV hissi) */
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-        
-        /* ÜST KATMAN (efektler ve yazılar) */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* TV ÇİZGİLERİ (küçük tarama efekti) */
+        /* TV EFEKTLERİ (opsiyonel) */
         .scanlines {
             position: absolute;
             top: 0;
@@ -84,10 +64,10 @@
             );
             pointer-events: none;
             z-index: 3;
-            opacity: 0.3;
+            opacity: 0.2;
         }
         
-        /* KANAL LOGOSU (damar FM) */
+        /* KANAL LOGOSU (damar FM) - VİDEOLARIN ÜSTÜNDE */
         .channel-logo {
             position: absolute;
             top: 30px;
@@ -155,11 +135,11 @@
             margin: 0 auto;
         }
         
-        .song-info {
+        .video-info {
             margin-bottom: 20px;
         }
         
-        .song-title {
+        .video-title {
             font-size: 2.8em;
             font-weight: bold;
             color: #ffd700;
@@ -168,7 +148,7 @@
             letter-spacing: 1px;
         }
         
-        .artist-name {
+        .video-desc {
             font-size: 1.5em;
             color: #fff;
             opacity: 0.9;
@@ -256,7 +236,7 @@
             border-color: #333;
         }
         
-        /* SAAT (TV'lerde olur) */
+        /* SAAT */
         .tv-clock {
             position: absolute;
             bottom: 30px;
@@ -269,36 +249,6 @@
             border-radius: 20px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        /* SES SEVİYESİ GÖSTERGESİ (VU metre) */
-        .vu-meter {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            z-index: 4;
-            display: flex;
-            gap: 5px;
-            align-items: flex-end;
-            height: 40px;
-        }
-        
-        .vu-bar {
-            width: 8px;
-            background: linear-gradient(to top, #ff6b6b, #ffd700);
-            border-radius: 4px;
-            height: 20px;
-            animation: vuAnimation 0.5s infinite alternate;
-        }
-        
-        .vu-bar:nth-child(2) { animation-delay: 0.1s; }
-        .vu-bar:nth-child(3) { animation-delay: 0.2s; }
-        .vu-bar:nth-child(4) { animation-delay: 0.3s; }
-        .vu-bar:nth-child(5) { animation-delay: 0.4s; }
-        
-        @keyframes vuAnimation {
-            0% { height: 10px; }
-            100% { height: 40px; }
         }
         
         /* MOBİL UYUMLULUK */
@@ -317,11 +267,11 @@
                 right: 15px;
             }
             
-            .song-title {
+            .video-title {
                 font-size: 1.8em;
             }
             
-            .artist-name {
+            .video-desc {
                 font-size: 1.2em;
             }
             
@@ -351,74 +301,80 @@
 </head>
 <body>
     <div class="tv-screen">
-        <!-- VİDEO ARKA PLAN (sabit kapak resmi) -->
-        <div class="video-background">
-            <img src="kapak.jpeg" id="coverImage" alt="damar FM TV" 
-                 onerror="this.src='https://via.placeholder.com/1920x1080/ff6b6b/ffffff?text=damar+FM'">
+        <!-- VİDEO ALANI -->
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                <!-- Videolar JavaScript ile yüklenecek -->
+            </video>
         </div>
         
         <!-- TV EFEKTLERİ -->
         <div class="scanlines"></div>
         
-        <!-- ÜST KATMAN -->
-        <div class="overlay">
-            <!-- KANAL LOGOSU -->
-            <div class="channel-logo">🎵 damar FM</div>
-            
-            <!-- CANLI ETİKETİ -->
-            <div class="live-badge">🔴 CANLI TV</div>
-            
-            <!-- SAAT -->
-            <div class="tv-clock" id="tvClock"></div>
-            
-            <!-- VU METRE (ses göstergesi) -->
-            <div class="vu-meter">
-                <div class="vu-bar"></div>
-                <div class="vu-bar"></div>
-                <div class="vu-bar"></div>
-                <div class="vu-bar"></div>
-                <div class="vu-bar"></div>
-            </div>
-            
-            <!-- KONTROL BUTONLARI -->
-            <div class="control-buttons">
-                <button class="control-btn" onclick="previousSong()">⏮️</button>
-                <button class="control-btn play-pause" id="playPauseBtn" onclick="togglePlay()">⏸️</button>
-                <button class="control-btn" onclick="nextSong()">⏭️</button>
-            </div>
-            
-            <!-- ALT BİLGİ PANELİ -->
-            <div class="info-panel">
-                <div class="now-playing-bar">
-                    <div class="song-info">
-                        <div class="song-title" id="songTitle">damar FM</div>
-                        <div class="artist-name" id="artistName">Canlı Müzik TV</div>
+        <!-- KANAL LOGOSU (videoların üstünde) -->
+        <div class="channel-logo">🎵 damar FM</div>
+        
+        <!-- CANLI ETİKETİ -->
+        <div class="live-badge">🔴 CANLI TV</div>
+        
+        <!-- SAAT -->
+        <div class="tv-clock" id="tvClock"></div>
+        
+        <!-- KONTROL BUTONLARI -->
+        <div class="control-buttons">
+            <button class="control-btn" onclick="previousVideo()">⏮️</button>
+            <button class="control-btn play-pause" id="playPauseBtn" onclick="togglePlay()">⏸️</button>
+            <button class="control-btn" onclick="nextVideo()">⏭️</button>
+        </div>
+        
+        <!-- ALT BİLGİ PANELİ -->
+        <div class="info-panel">
+            <div class="now-playing-bar">
+                <div class="video-info">
+                    <div class="video-title" id="videoTitle">damar FM</div>
+                    <div class="video-desc" id="videoDesc">Canlı Video TV</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
                     </div>
-                    
-                    <div class="progress-container">
-                        <div class="progress-bar" id="progressBar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                        <div class="time-info">
-                            <span id="currentTime">0:00</span>
-                            <span id="duration">0:00</span>
-                        </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- SES OYNATICI (gizli) -->
-    <audio id="audioPlayer" style="display: none;"></audio>
 
     <script>
-        // MP3 PLAYLIST
+        // MP4 VİDEO LİSTESİ - KENDİ VİDEOLARINIZLA DEĞİŞTİRİN!
         const playlist = [
-            { file: 'sarki1.mp3', title: 'damar FM', artist: 'Şarkı 1 - Hareketli' },
-            { file: 'sarki2.mp3', title: 'damar FM', artist: 'Şarkı 2 - Romantik' },
-            { file: 'sarki3.mp3', title: 'damar FM', artist: 'Şarkı 3 - Slow' },
-            { file: 'sarki4.mp3', title: 'damar FM', artist: 'Şarkı 4 - Karışık' }
+            { 
+                file: 'video1.mp4', 
+                title: 'damar FM', 
+                desc: 'Video 1 - Hareketli Parça',
+                duration: 180 // saniye cinsinden (opsiyonel)
+            },
+            { 
+                file: 'video2.mp4', 
+                title: 'damar FM', 
+                desc: 'Video 2 - Romantik Parça',
+                duration: 210
+            },
+            { 
+                file: 'video3.mp4', 
+                title: 'damar FM', 
+                desc: 'Video 3 - Slow Parça',
+                duration: 195
+            },
+            { 
+                file: 'video4.mp4', 
+                title: 'damar FM', 
+                desc: 'Video 4 - Karışık Parça',
+                duration: 225
+            }
         ];
         
         // Değişkenler
@@ -426,17 +382,17 @@
         let isPlaying = false;
         let progressInterval;
         
-        const audio = document.getElementById('audioPlayer');
+        const video = document.getElementById('videoPlayer');
         const playPauseBtn = document.getElementById('playPauseBtn');
-        const songTitle = document.getElementById('songTitle');
-        const artistName = document.getElementById('artistName');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoDesc = document.getElementById('videoDesc');
         const progressFill = document.getElementById('progressFill');
         const currentTimeSpan = document.getElementById('currentTime');
         const durationSpan = document.getElementById('duration');
         const progressBar = document.getElementById('progressBar');
         const tvClock = document.getElementById('tvClock');
         
-        // SAATİ GÜNCELLE (TV'de saat gösterimi)
+        // SAATİ GÜNCELLE
         function updateClock() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
@@ -453,28 +409,28 @@
             
             if (savedIndex !== null) {
                 currentIndex = parseInt(savedIndex);
-                audio.src = playlist[currentIndex].file;
-                updateSongInfo();
+                video.src = playlist[currentIndex].file;
+                updateVideoInfo();
                 
                 if (savedTime !== null) {
-                    audio.addEventListener('loadedmetadata', function() {
-                        audio.currentTime = parseFloat(savedTime);
+                    video.addEventListener('loadedmetadata', function() {
+                        video.currentTime = parseFloat(savedTime);
                     }, { once: true });
                 }
             } else {
-                audio.src = playlist[0].file;
-                updateSongInfo();
+                video.src = playlist[0].file;
+                updateVideoInfo();
             }
         }
         
-        // Şarkı bilgilerini güncelle
-        function updateSongInfo() {
-            const song = playlist[currentIndex];
-            songTitle.textContent = song.title;
-            artistName.textContent = song.artist;
+        // Video bilgilerini güncelle
+        function updateVideoInfo() {
+            const vid = playlist[currentIndex];
+            videoTitle.textContent = vid.title;
+            videoDesc.textContent = vid.desc;
         }
         
-        // Zaman formatla
+        // Zaman formatla (saniye -> mm:ss)
         function formatTime(seconds) {
             if (isNaN(seconds)) return '0:00';
             const mins = Math.floor(seconds / 60);
@@ -484,59 +440,59 @@
         
         // Progress bar'ı güncelle
         function updateProgress() {
-            if (audio.duration) {
-                const progress = (audio.currentTime / audio.duration) * 100;
+            if (video.duration) {
+                const progress = (video.currentTime / video.duration) * 100;
                 progressFill.style.width = `${progress}%`;
-                currentTimeSpan.textContent = formatTime(audio.currentTime);
-                durationSpan.textContent = formatTime(audio.duration);
+                currentTimeSpan.textContent = formatTime(video.currentTime);
+                durationSpan.textContent = formatTime(video.duration);
                 
                 // Konumu kaydet
-                localStorage.setItem('damarFM_lastTime', audio.currentTime.toString());
+                localStorage.setItem('damarFM_lastTime', video.currentTime.toString());
                 localStorage.setItem('damarFM_lastIndex', currentIndex.toString());
             }
         }
         
-        // Şarkı çal
-        function playSong(index) {
+        // Video çal
+        function playVideo(index) {
             if (index >= 0 && index < playlist.length) {
                 currentIndex = index;
-                audio.src = playlist[currentIndex].file;
-                updateSongInfo();
-                audio.play();
+                video.src = playlist[currentIndex].file;
+                updateVideoInfo();
+                video.play();
                 isPlaying = true;
                 playPauseBtn.innerHTML = '⏸️';
                 
                 if (progressInterval) clearInterval(progressInterval);
                 progressInterval = setInterval(updateProgress, 1000);
                 
-                audio.onended = nextSong;
+                video.onended = nextVideo;
             }
         }
         
         // Oynat/Duraklat
         function togglePlay() {
             if (isPlaying) {
-                audio.pause();
+                video.pause();
                 playPauseBtn.innerHTML = '▶️';
                 clearInterval(progressInterval);
             } else {
-                audio.play();
+                video.play();
                 playPauseBtn.innerHTML = '⏸️';
                 progressInterval = setInterval(updateProgress, 1000);
             }
             isPlaying = !isPlaying;
         }
         
-        // Sonraki şarkı
-        function nextSong() {
+        // Sonraki video
+        function nextVideo() {
             let nextIndex = (currentIndex + 1) % playlist.length;
-            playSong(nextIndex);
+            playVideo(nextIndex);
         }
         
-        // Önceki şarkı
-        function previousSong() {
+        // Önceki video
+        function previousVideo() {
             let prevIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-            playSong(prevIndex);
+            playVideo(prevIndex);
         }
         
         // Progress bar'a tıklandığında
@@ -546,14 +502,14 @@
             const width = rect.width;
             const percentage = clickX / width;
             
-            if (audio.duration) {
-                audio.currentTime = audio.duration * percentage;
+            if (video.duration) {
+                video.currentTime = video.duration * percentage;
             }
         });
         
         // Sayfa kapanırken konumu kaydet
         window.addEventListener('beforeunload', function() {
-            localStorage.setItem('damarFM_lastTime', audio.currentTime.toString());
+            localStorage.setItem('damarFM_lastTime', video.currentTime.toString());
             localStorage.setItem('damarFM_lastIndex', currentIndex.toString());
         });
         
@@ -562,7 +518,7 @@
             loadSavedPosition();
             
             // Otomatik oynatma dene
-            audio.play().then(() => {
+            video.play().then(() => {
                 isPlaying = true;
                 playPauseBtn.innerHTML = '⏸️';
                 progressInterval = setInterval(updateProgress, 1000);
