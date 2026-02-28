@@ -4,16 +4,16 @@
 #EXT-X-MEDIA-SEQUENCE:1
 #EXT-X-PLAYLIST-TYPE:VOD
 
-#EXTINF:269, Şarkı 1
+#EXTINF:269, damar FM - Şarkı 1
 sarki1.mp3
 
-#EXTINF:352, Şarkı 2
+#EXTINF:352, damar FM - Şarkı 2
 sarki2.mp3
 
-#EXTINF:401, Şarkı 3
+#EXTINF:401, damar FM - Şarkı 3
 sarki3.mp3
 
-#EXTINF:300, Şarkı 4
+#EXTINF:300, damar FM - Şarkı 4
 sarki4.mp3
 
 #EXT-X-ENDLIST
