@@ -4,7 +4,7 @@
 #EXT-X-MEDIA-SEQUENCE:1
 #EXT-X-PLAYLIST-TYPE:VOD
 
-#EXTINF:180, damar FM - Video 1
+#EXTINF:324, damar FM - Video 1
 video1.mp4
 
 #EXTINF:210, damar FM - Video 2
