@@ -446,10 +446,10 @@ https://ankatvplus.github.io/github/relax/relax18.m3u8
 https://ankatvplus.github.io/github/relax/relax19.m3u8
 #EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ RELAX 20
 https://ankatvplus.github.io/github/relax/relax20.m3u8
-#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ DAMARFMDAMARFM4
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ BLOK3 - KUSURA BAKMA
 https://ankatvplus.github.io/prolivetv/playlist.ts
-
-
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ MOTIVE YINYANG
+https://ankatvplus.github.io/prolivetv/motive-yinyang.ts
 
 
 
