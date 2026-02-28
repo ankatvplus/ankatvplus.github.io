@@ -175,22 +175,55 @@ https://ciner.daioncdn.net/bloomberght/bloomberght.m3u8
 #EXTINF:-1 tvg-id="Ekoturk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Haber",★EKOTURK
 https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/ekoturk.m3u8
 
-#EXTINF:-1 tvg-id="BabyTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★★★COCUK KANALLARI★★★
+#EXTINF:-1 tvg-id="BabyTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★★★COCUK KANALLARI★★★
 https://ankatvplus.github.io/logo.png
-#EXTINF:-1 tvg-id="BabyTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★BABY TV
+#EXTINF:-1 tvg-id="BabyTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★BABY TV
 https://saran-live.ercdn.net/babytv/index.m3u8
-#EXTINF:-1 tvg-id="TRTEbaTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★TRT EBA TV
+#EXTINF:-1 tvg-id="TRTEbaTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★TRT EBA TV
 https://tv-e-okul01.medya.trt.com.tr/master.m3u8
-#EXTINF:-1 tvg-id="TRTCocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★TRT COCUK
+#EXTINF:-1 tvg-id="TRTCocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★TRT COCUK
 https://tv-trtcocuk.medya.trt.com.tr/master.m3u8
-#EXTINF:-1 tvg-id="TRTDiyanetCocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★TRT DIYANET COCUK
+#EXTINF:-1 tvg-id="TRTDiyanetCocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★TRT DIYANET COCUK
 https://tv-trtdiyanetcocuk.medya.trt.com.tr/master.m3u8
-#EXTINF:-1 tvg-id="trtdiyanetcocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★ DİYANET ÇOCUK
+#EXTINF:-1 tvg-id="trtdiyanetcocuk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ DİYANET ÇOCUK
 https://tv-trtdiyanetcocuk.medya.trt.com.tr/master_1440.m3u8
-#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★MiNiKA COCUK 
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★MiNiKA COCUK 
 https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/minikago_cocuk/minikago_cocuk_480p.m3u8
-#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Çocuk",★MiNiKA GO
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★MiNiKA GO
 https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/minikago/minikago_480p.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ CARTOON NETWORK
+https://yayin2.canlitv.fun/live/cartoon-network.stream/chunklist_w799983719.m3u8?hash=1b83229214e67a1e99ac3fada8db7671
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★BBC KIDS
+https://jmp2.uk/stvp-US800003JM
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★DUCK TV
+https://jmp2.uk/stvp-US3400003HI
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★MOONBUG TV
+https://jmp2.uk/stvp-USBB11000015Q
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★TG JUNIOR TV
+https://jmp2.uk/stvp-USBB3600001R6
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ SUPER TONS TV
+https://jmp2.uk/stvp-ESBD5100001G0
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ MAYA TV
+https://jmp2.uk/stvp-ESBD3200002V5
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ RABBITS TV
+https://jmp2.uk/stvp-ESBD2300003S5
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ NINJA BOY
+https://jmp2.uk/stvp-ES2600008NX
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ CRY BABIES
+https://jmp2.uk/stvp-ES4400005EJ
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ DUCK TV
+https://jmp2.uk/stvp-ESBC4700001GR
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ POCOYO TV
+https://jmp2.uk/stvp-ESBC3900004ED
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ CAILLOU TV
+https://jmp2.uk/stvp-ES4800002OZ
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ BABY SHARK TV
+https://jmp2.uk/stvp-ES17000065P
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ SIRINLER TV
+https://jmp2.uk/stvp-ESBD130000205
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="COCUK",★ LOO LOO KIDS
+https://jmp2.uk/stvp-ES5000001CS
+
 
 
 #EXTINF:-1 tvg-id="A2TV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Belgesel",★★★BELGESEL KANALLARI★★★
@@ -288,38 +321,61 @@ http://65.108.239.207/t3/index.m3u8
 
 
 
-#EXTINF:-1 tvg-id="TRTMuzik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★★★MUZIK KANALLARI★★★
+#EXTINF:-1 tvg-id="TRTMuzik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★★★MUZIK KANALLARI★★★
 https://ankatvplus.github.io/logo.png
-#EXTINF:-1 tvg-id="TRTMuzik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★TRT MUZIK
+#EXTINF:-1 tvg-id="TRTMuzik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★TRT MUZIK
 https://tv-trtmuzik.medya.trt.com.tr/master.m3u8
-#EXTINF:-1 tvg-id="PowerTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWER TV
+#EXTINF:-1 tvg-id="PowerTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWER TV
 https://live.artidijitalmedya.com/artidijital_powertv/powertv/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerTurkTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWERTURK TV
+#EXTINF:-1 tvg-id="PowerTurkTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWERTURK TV
 https://live.artidijitalmedya.com/artidijital_powerturktv/powerturktv/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerTurkTaptaze.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWERTURK TAPTAZE
+#EXTINF:-1 tvg-id="PowerTurkTaptaze.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWERTURK TAPTAZE
 https://livetv.powerapp.com.tr/pturktaptaze/taptaze.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerTurkSlow.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWERTURK SLOW
+#EXTINF:-1 tvg-id="PowerTurkSlow.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWERTURK SLOW
 https://livetv.powerapp.com.tr/pturkslow/slow.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerTurkAkustik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWERTURK AKUSTIK
+#EXTINF:-1 tvg-id="PowerTurkAkustik.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWERTURK AKUSTIK
 https://livetv.powerapp.com.tr/pturkakustik/akustik.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerLove.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWER LOVE
+#EXTINF:-1 tvg-id="PowerLove.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWER LOVE
 https://livetv.powerapp.com.tr/plove/love.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="PowerDance.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★POWER DANCE
+#EXTINF:-1 tvg-id="PowerDance.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★POWER DANCE
 https://livetv.powerapp.com.tr/dance/dance.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Number1TV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★NUMBER 1 TV
+#EXTINF:-1 tvg-id="Number1TV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★NUMBER 1 TV
 https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/broadcast_5c9e17cd59e8b.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Number1Turk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★NUMBER 1 TURK
+#EXTINF:-1 tvg-id="Number1Turk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★NUMBER 1 TURK
 https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/broadcast_5c9e187770143.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Number1Dance.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★NUMBER 1 DANCE
+#EXTINF:-1 tvg-id="Number1Dance.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★NUMBER 1 DANCE
 https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e2aa8acf44_1/playlist.m3u8
-#EXTINF:-1 tvg-id="Number1Damar.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★NUMBER 1 DAMAR
+#EXTINF:-1 tvg-id="Number1Damar.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★NUMBER 1 DAMAR
 https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e198784bdc_1/playlist.m3u8
-#EXTINF:-1 tvg-id="Number1Ask.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★NUMBER 1 ASK
+#EXTINF:-1 tvg-id="Number1Ask.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★NUMBER 1 ASK
 https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e18f9cea15_1/playlist.m3u8
-#EXTINF:-1 tvg-id="KralPopTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★KRAL POP TV
+#EXTINF:-1 tvg-id="KralPopTV.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★KRAL POP TV
 https://dogus.daioncdn.net/kralpoptv/kralpoptv.m3u8?app=kralpoptv_web
-#EXTINF:-1 tvg-id="DreamTurk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Müzik",★DREAM TURK
+#EXTINF:-1 tvg-id="DreamTurk.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★DREAM TURK
 https://live.duhnet.tv/S2/HLS_LIVE/dreamturknp/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ DAMAR TV
+https://tvsms.club/tv.php?kanal=damar&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ ARABESK TV
+https://tvsms.club/tv.php?kanal=arabeskyeni&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ SILA TV
+https://tvsms.club/tv.php?kanal=silatv&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ HITS TV
+https://tvsms.club/tv.php?kanal=zeynotv&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ DOST MUZIK
+https://tvsms.club/tvz.php?kanal=dost&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ EZO TV
+https://tvsms.club/tvz.php?kanal=ezo&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ TOP TV
+https://tvsms.club/tvz.php?kanal=toppop&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ VIVA TV
+https://tvsms.club/tv.php?kanal=vivatv&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ ARMA TV
+https://tvsms.club/tvz.php?kanal=arma&file=.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★ GENÇ TV
+https://tvsms.club/tv.php?kanal=genctv&file=.m3u8
+
+#EXTINF:-1 tvg-id="paniktv.tr" tvg-logo="https://ankatvplus.github.io/logo.png" group-title="MUSIC",★PANIK TV (grece)
+https://livetv.streams.ovh:1936/paniktv/paniktv/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png",★★★MODA KANALLARI★★★
 https://ankatvplus.github.io/logo.png
@@ -390,3 +446,15 @@ https://ankatvplus.github.io/github/relax/relax18.m3u8
 https://ankatvplus.github.io/github/relax/relax19.m3u8
 #EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ RELAX 20
 https://ankatvplus.github.io/github/relax/relax20.m3u8
+#EXTINF:-1 tvg-logo="https://ankatvplus.github.io/logo.png" group-title="Relax",★ DAMARFMDAMARFM4
+https://ankatvplus.github.io/prolivetv/playlist.mp4
+
+
+
+
+
+
+
+
+
+
