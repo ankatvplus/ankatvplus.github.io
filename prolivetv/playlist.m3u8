@@ -4,10 +4,10 @@
 #EXT-X-MEDIA-SEQUENCE:1
 #EXT-X-PLAYLIST-TYPE:VOD
 
-#EXTINF:300, Şarkı 1
+#EXTINF:269, Şarkı 1
 sarki1.mp3
 
-#EXTINF:300, Şarkı 2
+#EXTINF:352, Şarkı 2
 sarki2.mp3
 
 #EXTINF:300, Şarkı 3
