@@ -3,196 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Müzik TV</title>
+    <title>M3U8 MP3 Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a2e;
             color: white;
             text-align: center;
             padding: 20px;
-            min-height: 100vh;
-            margin: 0;
         }
-        .player-container {
-            max-width: 500px;
-            margin: 50px auto;
-            background: rgba(255,255,255,0.1);
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #16213e;
             padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+        h1 { color: #0f3460; }
         .status {
-            font-size: 1.2em;
-            margin: 20px 0;
-            padding: 10px;
-            background: rgba(255,255,255,0.2);
+            background: #0f3460;
+            padding: 15px;
             border-radius: 10px;
-        }
-        .now-playing {
-            font-size: 1.5em;
-            font-weight: bold;
             margin: 20px 0;
-            color: #ffd700;
+            font-size: 1.2em;
         }
         audio {
             width: 100%;
             margin: 20px 0;
-            border-radius: 30px;
         }
-        .playlist {
-            text-align: left;
-            background: rgba(0,0,0,0.2);
+        .m3u8-info {
+            background: #1a1a2e;
             padding: 15px;
             border-radius: 10px;
             margin-top: 20px;
+            text-align: left;
+            font-size: 12px;
+            word-break: break-all;
         }
-        .playlist h3 {
-            margin-top: 0;
-            color: #ffd700;
-        }
-        .playlist-item {
-            padding: 8px;
-            margin: 5px 0;
-            background: rgba(255,255,255,0.1);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .playlist-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(5px);
-        }
-        .playlist-item.active {
-            background: rgba(255,215,0,0.3);
-            border-left: 4px solid gold;
-        }
-        button {
-            background: gold;
-            color: #333;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 10px;
-            transition: 0.3s;
-        }
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 0.8em;
-            opacity: 0.7;
+        a {
+            color: #e94560;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="player-container">
-        <h1>🎵 ONLINE MÜZİK TV</h1>
-        <div class="status">🔴 CANLI YAYINDA</div>
-        <div class="now-playing" id="nowPlaying">Şarkı seçili değil</div>
+    <div class="container">
+        <h1>🎵 M3U8 MP3 Oynatıcı</h1>
         
-        <audio id="audioPlayer" controls></audio>
-        
-        <div>
-            <button onclick="playRandom()">🎲 Rastgele Çal</button>
-            <button onclick="togglePlay()">⏯️ Oynat/Duraklat</button>
+        <div class="status" id="status">
+            📻 M3U8 yükleniyor...
         </div>
         
-        <div class="playlist">
-            <h3>📋 Çalma Listesi</h3>
-            <div id="playlistItems"></div>
+        <audio id="audio" controls></audio>
+        
+        <div style="margin: 20px 0;">
+            <button onclick="playM3U8()" style="background: #e94560; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">▶️ Yayını Başlat</button>
+            <button onclick="copyM3ULink()" style="background: #0f3460; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">📋 M3U Linkini Kopyala</button>
         </div>
         
-        <div class="footer">
-            ⚡ 4 MP3 dosyası sırayla çalıyor | Canlı TV deneyimi
+        <div class="m3u8-info" id="m3u8Info">
+            <strong>📁 M3U8 Dosyası:</strong> playlist.m3u8<br>
+            <strong>🎵 MP3'ler:</strong> sarki1.mp3, sarki2.mp3, sarki3.mp3, sarki4.mp3<br>
+            <strong>🔗 M3U Linki:</strong> <span id="m3uLink">https://KULLANICIADINIZ.github.io/online-tv/tvlistesi.m3u</span>
         </div>
     </div>
 
     <script>
-        // MP3 DOSYALARININ LİSTESİ - BURAYI KENDİ DOSYALARINIZLA GÜNCELLEYİN!
-        const playlist = [
-            { name: "Şarkı 1", file: "sarki1.mp3" },
-            { name: "Şarkı 2", file: "sarki2.mp3" },
-            { name: "Şarkı 3", file: "sarki3.mp3" },
-            { name: "Şarkı 4", file: "sarki4.mp3" }
-        ];
+        const audio = document.getElementById('audio');
+        const statusDiv = document.getElementById('status');
         
-        let currentIndex = 0;
-        const audio = document.getElementById('audioPlayer');
-        
-        // Playlist'i ekranda göster
-        function displayPlaylist() {
-            const container = document.getElementById('playlistItems');
-            container.innerHTML = '';
+        function playM3U8() {
+            // M3U8 dosyasının URL'si
+            const m3u8Url = 'playlist.m3u8';
             
-            playlist.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'playlist-item' + (index === currentIndex ? ' active' : '');
-                div.innerHTML = `🎵 ${item.name}`;
-                div.onclick = () => playSong(index);
-                container.appendChild(div);
+            statusDiv.innerHTML = '⏳ M3U8 yükleniyor...';
+            
+            // M3U8 dosyasını oku
+            fetch(m3u8Url)
+                .then(response => response.text())
+                .then(data => {
+                    console.log('M3U8 içeriği:', data);
+                    
+                    // M3U8'den MP3 dosyalarını bul
+                    const lines = data.split('\n');
+                    const mp3Files = [];
+                    
+                    for (let i = 0; i < lines.length; i++) {
+                        if (lines[i].includes('.mp3')) {
+                            mp3Files.push(lines[i].trim());
+                        }
+                    }
+                    
+                    if (mp3Files.length > 0) {
+                        statusDiv.innerHTML = `✅ M3U8 yüklendi! ${mp3Files.length} MP3 bulundu.<br>`;
+                        statusDiv.innerHTML += `📋 Sıra: ${mp3Files.join(' → ')}`;
+                        
+                        // İlk MP3'ü çal
+                        audio.src = mp3Files[0];
+                        audio.play();
+                        
+                        // MP3 bittiğinde sıradakine geç
+                        let currentIndex = 0;
+                        
+                        audio.addEventListener('ended', function() {
+                            currentIndex = (currentIndex + 1) % mp3Files.length;
+                            audio.src = mp3Files[currentIndex];
+                            audio.play();
+                            statusDiv.innerHTML = `▶️ Şimdi çalıyor: ${mp3Files[currentIndex]}`;
+                        });
+                        
+                    } else {
+                        statusDiv.innerHTML = '❌ M3U8 içinde MP3 bulunamadı!';
+                    }
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                    statusDiv.innerHTML = '❌ M3U8 yüklenemedi! Dosya yollarını kontrol edin.';
+                });
+        }
+        
+        function copyM3ULink() {
+            const link = document.getElementById('m3uLink').innerText;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ M3U linki kopyalandı: ' + link);
             });
         }
         
-        // Şarkı çal
-        function playSong(index) {
-            currentIndex = index;
-            const song = playlist[currentIndex];
-            audio.src = song.file;
-            audio.play();
-            document.getElementById('nowPlaying').innerHTML = `🎵 Şimdi çalıyor: ${song.name}`;
-            
-            // Aktif şarkıyı vurgula
-            const items = document.querySelectorAll('.playlist-item');
-            items.forEach((item, i) => {
-                if (i === currentIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
-        
-        // Sonraki şarkıya geç
-        function nextSong() {
-            let nextIndex = (currentIndex + 1) % playlist.length;
-            playSong(nextIndex);
-        }
-        
-        // Rastgele şarkı çal
-        function playRandom() {
-            let randomIndex = Math.floor(Math.random() * playlist.length);
-            playSong(randomIndex);
-        }
-        
-        // Oynat/Duraklat
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
+        // Sayfa yüklendiğinde
+        window.onload = function() {
+            // GitHub kullanıcı adını otomatik almak mümkün olmadığı için,
+            // kullanıcının manuel olarak değiştirmesi gerekecek
+            const user = prompt('GitHub kullanıcı adınızı girin:', 'kullaniciadi');
+            if (user) {
+                document.getElementById('m3uLink').innerText = `https://${user}.github.io/online-tv/tvlistesi.m3u`;
             }
-        }
-        
-        // Şarkı bitince sonrakine geç
-        audio.addEventListener('ended', nextSong);
-        
-        // Sayfa yüklenince playlist'i göster
-        displayPlaylist();
-        
-        // İlk şarkıyı hazırla (otomatik başlatmak isterseniz aşağıdaki satırı aktif edin)
-        // playSong(0);
+        };
     </script>
 </body>
 </html>
